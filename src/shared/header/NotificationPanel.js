@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Button,
   CardBody,
   CardHeader,
-  Card
+  Card,
+  Table,
+  Row
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './notificatinPannel.css';
@@ -17,56 +19,55 @@ const TodayNotification = 0;
 const NextWeekNotification = 0;
 const NextMonthNotification = 0;
 
-class NotificationPannel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { collapse: true };
-  }
-
-  toggle() {
-    this.setState(state => ({ collapse: !state.collapse }));
-  }
+class NotificationPannel extends Component {
+  state = {
+    // viewToday: true,
+    // viewLastWeek: false,
+    // viewPevious: false
+  };
+  notificationData = [
+    'notific 01',
+    'notific 02',
+    'notific 03',
+    'notific 04',
+    'notific 05',
+    'notific 06',
+    'notific 01',
+    'notific 02',
+    'notific 03',
+    'notific 04',
+    'notific 05',
+    'notific 06',
+    'notific 07'
+  ];
+  // toggle() {
+  //   this.setState({
+  //     collapseToday: !state.collapse
+  //   });
+  // }
 
   state = {};
-  render() {
-    return (
-      // <div>
-      //   <Button
-      //     color="primary"
-      //     onClick={this.toggle}
-      //     style={{ marginBottom: '1rem' }}
-      //   >
-      //     Notifications
-      //   </Button>
-      <Collapse isOpen={this.state.collapse} id="collapse_main">
-        <Card>
-          <CardHeader>
-            {TodayDay} Events ({TodayNotification})
-          </CardHeader>
-          <CardBody>Event</CardBody>
-        </Card>
 
-        <Card>
-          <CardHeader>
-            {NextWeek} Events ({NextWeekNotification})
-          </CardHeader>
-          <CardBody>Event</CardBody>
+  getNotifications() {
+    return this.notificationData.map(notification => (
+      <tr key={notification}>
+        <td>{notification}</td>
+      </tr>
+    ));
+  }
+  render() {
+    // const { viewToday, viewYesterday, viewPrevious } = this.state;
+    return (
+      <React.Fragment>
+        <Card id="mainDev">
+          {/* <CardHeader></CardHeader>
+          <CardBody> */}
+          <Table responsive striped id="notificationTable">
+            {this.getNotifications()}
+          </Table>
+          {/* </CardBody> */}
         </Card>
-        <Card>
-          <CardHeader>
-            {NextMonth} Events ({NextMonthNotification})
-          </CardHeader>
-          <CardBody>Event</CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            {NextMonth} Events ({NextMonthNotification})
-          </CardHeader>
-          <CardBody>Event</CardBody>
-        </Card>
-      </Collapse>
-      // </div>
+      </React.Fragment>
     );
   }
 }
