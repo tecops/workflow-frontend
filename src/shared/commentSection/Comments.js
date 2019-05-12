@@ -76,18 +76,21 @@ class Comments extends Component {
     const comments = [
       {
         commentId: 'c001',
+        eventId: '123',
         commentText: 'Can you please change the venue?',
         createdBy: 'Dilani Wickramarachchi',
         date: new Date('2019-2-12')
       },
       {
         commentId: 'c002',
+        eventId: '123',
         commentText: 'Can you please change the date?',
         createdBy: 'Ruwan Wickramarachchi',
         date: new Date('2019-2-15')
       },
       {
         commentId: 'c003',
+        eventId: '123',
         commentText: 'Can you please change the time?',
         createdBy: 'Chathura Rajapakse',
         date: new Date('2019-2-18')
